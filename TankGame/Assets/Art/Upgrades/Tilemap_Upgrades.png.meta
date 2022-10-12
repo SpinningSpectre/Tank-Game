@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f56a92ebb7ff0ca478b2d4944396bd4d
+guid: 0cb2928d6ad15694db916c6c63cf56df
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TileSheet_Tank 1_0
+      name: Tilemap_Upgrades_0
       rect:
         serializedVersion: 2
         x: 0
         y: 32
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bcb6c9b64a5b1b24b9ed11f779aa6965
-      internalID: 436378739
+      spriteID: 99ea69bbc450ddd4fba86e60c2e33d7b
+      internalID: -1548979730
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileSheet_Tank 1_1
+      name: Tilemap_Upgrades_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 16
         y: 32
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +152,62 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f8605616b8bdb04380d1e5861095c6f
-      internalID: 1009608597
+      spriteID: 24212497cc8a99242bf1aa32a9a5226a
+      internalID: 2030996902
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileSheet_Tank 1_2
+      name: Tilemap_Upgrades_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04a6d22b4cd9b4a4cbb3ff4a09802187
+      internalID: 280950776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Upgrades_3
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d60982ae78cfff4da3b30b8831a5e5a
+      internalID: 1631209166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Upgrades_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +215,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 348ffee473cf7dd4ebfeec1715ffe76d
-      internalID: 1635412487
+      spriteID: c93284618bd26c8479432dda6e771edc
+      internalID: 520140241
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileSheet_Tank 1_3
+      name: Tilemap_Upgrades_5
       rect:
         serializedVersion: 2
-        x: 32
+        x: 16
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,8 +236,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4cf09a04cc1df40458f6cad7f37d4285
-      internalID: -1259041530
+      spriteID: 48c945cbd634ca647bf7673fdf791738
+      internalID: -1514411401
       vertices: []
       indices: 
       edges: []
@@ -211,10 +253,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      TileSheet_Tank 1_1: 1009608597
-      TileSheet_Tank 1_0: 436378739
-      TileSheet_Tank 1_3: -1259041530
-      TileSheet_Tank 1_2: 1635412487
+      Tilemap_Upgrades_4: 520140241
+      Tilemap_Upgrades_5: -1514411401
+      Tilemap_Upgrades_3: 1631209166
+      Tilemap_Upgrades_1: 2030996902
+      Tilemap_Upgrades_2: 280950776
+      Tilemap_Upgrades_0: -1548979730
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -4885,7 +4885,7 @@ GameObject:
   - component: {fileID: 8310135254454063246}
   m_Layer: 0
   m_Name: PoisonBullet Variant
-  m_TagString: Kill
+  m_TagString: PoisonBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5018,4 +5018,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 8348298568284468266, guid: 3c3b1f6a0be894e48a71d231978420c3, type: 3}
+  explosion2: {fileID: 8348298568284468266, guid: 1757f768d5e4f1941973a06d3c482c87, type: 3}
+  explosion3: {fileID: 8348298568284468266, guid: 1757f768d5e4f1941973a06d3c482c87, type: 3}
   bullet: {fileID: 8310135254454063234}
+  Explodepoint2: {fileID: 8310135254454063234}
+  Explodepoint3: {fileID: 8310135254454063234}

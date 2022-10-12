@@ -4885,7 +4885,7 @@ GameObject:
   - component: {fileID: 6678208921361185654}
   m_Layer: 0
   m_Name: SnipeBullet Variant
-  m_TagString: Kill
+  m_TagString: SnipeBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5018,4 +5018,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 2342714445650502408, guid: 868f0ad8bda7f364b89fa8a6cb645833, type: 3}
+  explosion2: {fileID: 8348298568284468266, guid: 1757f768d5e4f1941973a06d3c482c87, type: 3}
+  explosion3: {fileID: 8348298568284468266, guid: 1757f768d5e4f1941973a06d3c482c87, type: 3}
   bullet: {fileID: 6678208921361185658}
+  Explodepoint2: {fileID: 6678208921361185658}
+  Explodepoint3: {fileID: 6678208921361185658}

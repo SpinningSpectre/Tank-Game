@@ -4885,7 +4885,7 @@ GameObject:
   - component: {fileID: 6012222013515072487}
   m_Layer: 0
   m_Name: closeBullet Variant
-  m_TagString: Kill
+  m_TagString: CloseBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5018,4 +5018,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 1120593551343242145, guid: 508bd2e2b314db445a07b45bfd1dc957, type: 3}
+  explosion2: {fileID: 8348298568284468266, guid: 1757f768d5e4f1941973a06d3c482c87, type: 3}
+  explosion3: {fileID: 8348298568284468266, guid: 1757f768d5e4f1941973a06d3c482c87, type: 3}
   bullet: {fileID: 6012222013515072491}
+  Explodepoint2: {fileID: 6012222013515072491}
+  Explodepoint3: {fileID: 6012222013515072491}
