@@ -11,6 +11,7 @@ TagManager:
   - SnipeBullet
   - PoisonBullet
   - SpreadBullet
+  - DamageBullet
   layers:
   - Default
   - TransparentFX

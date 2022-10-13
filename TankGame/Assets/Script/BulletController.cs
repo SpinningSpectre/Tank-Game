@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
+    [SerializeField]
     float bulletTtl = 10;
     [SerializeField]
     GameObject explosion;
@@ -17,12 +18,19 @@ public class BulletController : MonoBehaviour
     Transform Explodepoint2;
     [SerializeField]
     Transform Explodepoint3;
+    [SerializeField]
+    Transform upgrades;
+    void Start()
+    {
+        upgrades = GameObject.Find("Upgrades").transform;
+    }
     void Update()
     {
         bulletTtl -= Time.deltaTime;
         if (bulletTtl <= 0)
         {
             Destroy(gameObject);
+            bringBackButton();
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -32,6 +40,7 @@ public class BulletController : MonoBehaviour
             Instantiate(explosion, bullet.position, bullet.rotation);
             Instantiate(explosion2, Explodepoint2.position, bullet.rotation);
             Instantiate(explosion3, Explodepoint3.position, bullet.rotation);
+            bringBackButton();
             Destroy(gameObject);
         }
         if (collision.gameObject.CompareTag("Player"))
@@ -39,7 +48,12 @@ public class BulletController : MonoBehaviour
             Instantiate(explosion, bullet.position, bullet.rotation);
             Instantiate(explosion2, Explodepoint2.position, bullet.rotation);
             Instantiate(explosion3, Explodepoint3.position, bullet.rotation);
+            bringBackButton();
             Destroy(gameObject);
         }
+    }
+    public void bringBackButton()
+    {
+        upgrades.transform.position = new Vector2(387, 357);
     }
 }

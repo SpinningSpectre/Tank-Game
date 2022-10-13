@@ -5,20 +5,20 @@ using UnityEngine;
 public class ButtonController : MonoBehaviour
 {
     [SerializeField]
-    Transform button;
-    float distance = 10;
+    Transform upgrades;
     // Start is called before the first frame update
     void Start()
     {
         
     }
+    public void buttonPressed()
+    {
+        upgrades.transform.position = new Vector2(387, 539);
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            transform.position = new Vector2(transform.position.x, transform.position.y - distance);
-        }
+
     }
 }

@@ -24,7 +24,9 @@ public class TankController : MonoBehaviour
     Transform firePoint3;
     //Speeds
     [SerializeField]
-    float speed = 20;
+    float movementSpeed = 2;
+    [SerializeField]
+    float bulletSpeed = 20;
     [SerializeField]
     float tripleSpeed = 15;
     [SerializeField]
@@ -44,6 +46,8 @@ public class TankController : MonoBehaviour
     GameObject FireworkToFire;
     [SerializeField]
     GameObject spreadBulletToFire;
+    [SerializeField]
+    GameObject damageBulletToFire;
     //Mouses
     public int Amount = 0;
     public int Normal = 1;
@@ -52,21 +56,31 @@ public class TankController : MonoBehaviour
     public int Close = 4;
     public int Poison = 5;
     public int Firework = 6;
-    public int Reset = 7;
+    public int Damage = 7;
     public int playerNumber = 1;
     public Text selecAttack;
     public Text HPText;
+    public Text MoveTime;
     bool isActive = false;
     bool allowedToMove = false;
     Animator animator;
+    //HP and death
     public int Health = 100;
+    [SerializeField]
+    GameObject Death;
+    [SerializeField]
+    Transform tankBody;
+    [SerializeField]
+    GameObject theEntireTank;
+    public float timeToMove = 3;
+    [SerializeField]
+    Transform upgrades;
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
     }
     void Update()
     {
-
         if (isActive == true)
         {
             //Rotation And Movement
@@ -75,16 +89,21 @@ public class TankController : MonoBehaviour
                 barrelRotator.RotateAround(Vector3.forward, Input.GetAxis("Vertical") * Time.deltaTime);
                 barrelRotator2.RotateAround(Vector3.forward, Input.GetAxis("Vertical") * Time.deltaTime);
                 barrelRotator3.RotateAround(Vector3.forward, Input.GetAxis("Vertical") * Time.deltaTime);
-                transform.Translate(new Vector2(Input.GetAxis("Player1") * 5 * Time.deltaTime, 0));
-                if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
+                if (timeToMove >= 0)
                 {
-                    animator.SetBool("Drive_Forward", true);
-                    animator.SetBool("Drive_Not", false);
-                }
-                else
-                {
-                    animator.SetBool("Drive_Forward", false);
-                    animator.SetBool("Drive_Not", true);
+                    transform.Translate(new Vector2(Input.GetAxis("Player1") * movementSpeed * Time.deltaTime, 0));
+                    if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
+                    {
+                        animator.SetBool("Drive_Forward", true);
+                        animator.SetBool("Drive_Not", false);
+                        timeToMove -= Time.deltaTime;
+                        MoveTime.text =  "Move Time: " + timeToMove.ToString();
+                    }
+                    else
+                    {
+                        animator.SetBool("Drive_Forward", false);
+                        animator.SetBool("Drive_Not", true);
+                    }
                 }
             }
             //Different types of bullets
@@ -93,7 +112,7 @@ public class TankController : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Mouse1))
                 {
                     GameObject bullet = Instantiate(bulletToFire, firePoint.position, firePoint.rotation);
-                    bullet.GetComponent<Rigidbody2D>().AddForce(barrelRotator.up * speed, ForceMode2D.Impulse);
+                    bullet.GetComponent<Rigidbody2D>().AddForce(barrelRotator.up * bulletSpeed, ForceMode2D.Impulse);
                 }
             }
             if (Snipe == Amount)
@@ -131,7 +150,7 @@ public class TankController : MonoBehaviour
                     Health = Health + 10;
                     HPText.text = "HP" + playerNumber + ":" + Health.ToString();
                     GameObject poisonbullet = Instantiate(poisonBulletToFire, firePoint.position, firePoint.rotation);
-                    poisonbullet.GetComponent<Rigidbody2D>().AddForce(barrelRotator.up * speed, ForceMode2D.Impulse);
+                    poisonbullet.GetComponent<Rigidbody2D>().AddForce(barrelRotator.up * bulletSpeed, ForceMode2D.Impulse);
                 }
             }
             if (Firework == Amount)
@@ -139,8 +158,23 @@ public class TankController : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Mouse1))
                 {
                     GameObject Firework = Instantiate(FireworkToFire, firePoint.position, firePoint.rotation);
-                    Firework.GetComponent<Rigidbody2D>().AddForce(barrelRotator.up * speed, ForceMode2D.Impulse);
+                    Firework.GetComponent<Rigidbody2D>().AddForce(barrelRotator.up * bulletSpeed, ForceMode2D.Impulse);
                 }
+            }
+            if (Damage == Amount)
+            {
+                if (Input.GetKeyDown(KeyCode.Mouse1))
+                {
+                    Health = Health - 10;
+                    HPText.text = "HP" + playerNumber + ":" + Health.ToString();
+                    GameObject damageBullet = Instantiate(damageBulletToFire, firePoint.position, firePoint.rotation);
+                    damageBullet.GetComponent<Rigidbody2D>().AddForce(barrelRotator.up * bulletSpeed, ForceMode2D.Impulse);
+                }
+            }
+            if (Health >= 150)
+            {
+                Health = 150;
+                updateHP();
             }
 
         }
@@ -151,6 +185,13 @@ public class TankController : MonoBehaviour
                 toChoosingAmount();
             }
         }
+        if (Health <= 0)
+        {
+            Health = 0;
+            HPText.text =Health + " Bitches".ToString();
+            Instantiate(Death, tankBody.position, tankBody.rotation);
+            Object.Destroy(theEntireTank);
+        }
         //Change turn
         if (Amount >= 1)
         {
@@ -159,17 +200,11 @@ public class TankController : MonoBehaviour
                 Invoke("ChangeTurn", 0.1f);
             }
         }
-
-        //Test stuff
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Amount++;
-        }
-        if (Reset == Amount)
-        {
-            Amount = 0;
-        }
-        selecAttack.text = "Selected  Attack: " + Amount.ToString();
+    }
+    public void defaultMoveTime()
+    {
+        timeToMove = 3;
+        MoveTime.text = "Seconds you can move: " + timeToMove.ToString();
     }
     //Change Turns?
     void ChangeTurn()
@@ -192,50 +227,60 @@ public class TankController : MonoBehaviour
     {
         Amount = 0;
         allowedToMove = false;
-        {
-            animator.SetBool("Drive_Forward", false);
-            animator.SetBool("Drive_Not", true);
-        }
+        animator.SetBool("Drive_Forward", false);
+        animator.SetBool("Drive_Not", true);
     }
     public void toNormalAmount()
     {
         Amount = 1;
         allowedToMove = true;
+        defaultMoveTime();
     }
     public void toSnipeAmount()
     {
         Amount = 2;
         allowedToMove = true;
+        defaultMoveTime();
     }
     public void toSpreadAmount()
     {
         Amount = 3;
         allowedToMove = true;
+        defaultMoveTime();
     }
     public void toBigAmount()
     {
         Amount = 4;
         allowedToMove = true;
+        defaultMoveTime();
     }
     public void toPoisonAmount()
     {
         Amount = 5;
         allowedToMove = true;
+        defaultMoveTime();
     }
     public void toFireworkAmount()
     {
         Amount = 6;
         allowedToMove = true;
+        defaultMoveTime();
+    }
+    public void toDamageAmount()
+    {
+        Amount = 7;
+        allowedToMove = true;
+        defaultMoveTime();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            Health = Health - 20;
+            Health = Health - 25;
         }
         if (collision.gameObject.CompareTag("SnipeBullet"))
         {
-            Health = Health - 30;
+            Health = Health - 50;
         }
         if (collision.gameObject.CompareTag("PoisonBullet"))
         {
@@ -243,12 +288,21 @@ public class TankController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("CloseBullet"))
         {
-            Health = Health - 30;
+            Health = Health - 40;
         }
         if (collision.gameObject.CompareTag("SpreadBullet"))
         {
-            Health = Health - 15;
+            Health = Health - 20;
         }
+        if (collision.gameObject.CompareTag("DamageBullet"))
+        {
+            Health = Health - 60;
+        }
+        updateHP();
+    }
+    public void updateHP()
+    {
         HPText.text = "HP" + playerNumber + ":" + Health.ToString();
     }
+
 }
