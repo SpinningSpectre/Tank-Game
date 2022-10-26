@@ -48,26 +48,26 @@ public class TankController : MonoBehaviour
     GameObject spreadBulletToFire;
     [SerializeField]
     GameObject damageBulletToFire;
-    //Mouses
-    public int Amount = 0;
-    public int Normal = 1;
-    public int Snipe = 2;
-    public int Spread = 3;
-    public int Close = 4;
-    public int Poison = 5;
-    public int Firework = 6;
-    public int Damage = 7;
+    //Upgrades
+    public int upgrade = 0;
+    public int normal = 1;
+    public int snipe = 2;
+    public int spread = 3;
+    public int close = 4;
+    public int poison = 5;
+    public int firework = 6;
+    public int damage = 7;
     public int playerNumber = 1;
-    public Text selecAttack;
-    public Text HPText;
-    public Text MoveTime;
+    public Text hpText;
+    public Text moveTime;
     bool isActive = false;
     bool allowedToMove = false;
     Animator animator;
+    Animator animatorBackround;
     //HP and death
-    public int Health = 100;
+    public int health = 100;
     [SerializeField]
-    GameObject Death;
+    GameObject death;
     [SerializeField]
     Transform tankBody;
     [SerializeField]
@@ -75,8 +75,11 @@ public class TankController : MonoBehaviour
     public float timeToMove = 3;
     [SerializeField]
     Transform upgrades;
+    public Slider hpBar;
+    public Slider schootSliderSpeed;
     void Start()
     {
+        animatorBackround = GameObject.Find("Backround").GetComponent<Animator>();
         animator = GetComponentInChildren<Animator>();
     }
     void Update()
@@ -97,83 +100,83 @@ public class TankController : MonoBehaviour
                         animator.SetBool("Drive_Forward", true);
                         animator.SetBool("Drive_Not", false);
                         timeToMove -= Time.deltaTime;
-                        MoveTime.text =  "Move Time: " + timeToMove.ToString();
+                        moveTime.text =timeToMove.ToString("F0");
                     }
                     else
                     {
-                        animator.SetBool("Drive_Forward", false);
-                        animator.SetBool("Drive_Not", true);
+                        StopWheels();
                     }
                 }
             }
             //Different types of bullets
-            if (Normal == Amount)
+            if (normal == upgrade)
             {
                 if (Input.GetKeyDown(KeyCode.Mouse1))
                 {
                     GameObject bullet = Instantiate(bulletToFire, firePoint.position, firePoint.rotation);
-                    bullet.GetComponent<Rigidbody2D>().AddForce(barrelRotator.up * bulletSpeed, ForceMode2D.Impulse);
+                    bullet.GetComponent<Rigidbody2D>().AddForce(barrelRotator.up * bulletSpeed* schootSliderSpeed.value, ForceMode2D.Impulse);
+                    StopWheels();
                 }
             }
-            if (Snipe == Amount)
+            if (snipe == upgrade)
             {
                 if (Input.GetKeyDown(KeyCode.Mouse1))
                 {
                     GameObject bigbullet = Instantiate(bigBulletToFire, firePoint.position, firePoint.rotation);
-                    bigbullet.GetComponent<Rigidbody2D>().AddForce(barrelRotator.up * snipeSpeed, ForceMode2D.Impulse);
+                    bigbullet.GetComponent<Rigidbody2D>().AddForce(barrelRotator.up * snipeSpeed * schootSliderSpeed.value, ForceMode2D.Impulse);
                 }
             }
-            if (Spread == Amount)
+            if (spread == upgrade)
             {
                 if (Input.GetKeyDown(KeyCode.Mouse1))
                 {
                     GameObject bullet = Instantiate(spreadBulletToFire, firePoint.position, firePoint.rotation);
                     GameObject bullet2 = Instantiate(spreadBulletToFire, firePoint2.position, firePoint2.rotation);
                     GameObject bullet3 = Instantiate(spreadBulletToFire, firePoint3.position, firePoint3.rotation);
-                    bullet.GetComponent<Rigidbody2D>().AddForce(barrelRotator.up * tripleSpeed, ForceMode2D.Impulse);
-                    bullet2.GetComponent<Rigidbody2D>().AddForce(barrelRotator2.up * tripleSpeed, ForceMode2D.Impulse);
-                    bullet3.GetComponent<Rigidbody2D>().AddForce(barrelRotator3.up * tripleSpeed, ForceMode2D.Impulse);
+                    bullet.GetComponent<Rigidbody2D>().AddForce(barrelRotator.up * tripleSpeed * schootSliderSpeed.value, ForceMode2D.Impulse);
+                    bullet2.GetComponent<Rigidbody2D>().AddForce(barrelRotator2.up * tripleSpeed * schootSliderSpeed.value, ForceMode2D.Impulse);
+                    bullet3.GetComponent<Rigidbody2D>().AddForce(barrelRotator3.up * tripleSpeed * schootSliderSpeed.value, ForceMode2D.Impulse);
                 }
             }
-            if (Close == Amount)
+            if (close == upgrade)
             {
                 if (Input.GetKeyDown(KeyCode.Mouse1))
                 {
                     GameObject biggerbullet = Instantiate(biggerBulletToFire, firePoint.position, firePoint.rotation);
-                    biggerbullet.GetComponent<Rigidbody2D>().AddForce(barrelRotator.up * closeSpeed, ForceMode2D.Impulse);
+                    biggerbullet.GetComponent<Rigidbody2D>().AddForce(barrelRotator.up * closeSpeed * schootSliderSpeed.value, ForceMode2D.Impulse);
                 }
             }
-            if (Poison == Amount)
+            if (poison == upgrade)
             {
                 if (Input.GetKeyDown(KeyCode.Mouse1))
                 {
-                    Health = Health + 10;
-                    HPText.text = "HP" + playerNumber + ":" + Health.ToString();
+                    health += 10;
+                    updateHP();
                     GameObject poisonbullet = Instantiate(poisonBulletToFire, firePoint.position, firePoint.rotation);
-                    poisonbullet.GetComponent<Rigidbody2D>().AddForce(barrelRotator.up * bulletSpeed, ForceMode2D.Impulse);
+                    poisonbullet.GetComponent<Rigidbody2D>().AddForce(barrelRotator.up * bulletSpeed * schootSliderSpeed.value, ForceMode2D.Impulse);
                 }
             }
-            if (Firework == Amount)
+            if (firework == upgrade)
             {
                 if (Input.GetKeyDown(KeyCode.Mouse1))
                 {
                     GameObject Firework = Instantiate(FireworkToFire, firePoint.position, firePoint.rotation);
-                    Firework.GetComponent<Rigidbody2D>().AddForce(barrelRotator.up * bulletSpeed, ForceMode2D.Impulse);
+                    Firework.GetComponent<Rigidbody2D>().AddForce(barrelRotator.up * bulletSpeed * schootSliderSpeed.value, ForceMode2D.Impulse);
                 }
             }
-            if (Damage == Amount)
+            if (damage == upgrade)
             {
                 if (Input.GetKeyDown(KeyCode.Mouse1))
                 {
-                    Health = Health - 10;
-                    HPText.text = "HP" + playerNumber + ":" + Health.ToString();
+                    health = health - 10;
+                    updateHP();
                     GameObject damageBullet = Instantiate(damageBulletToFire, firePoint.position, firePoint.rotation);
-                    damageBullet.GetComponent<Rigidbody2D>().AddForce(barrelRotator.up * bulletSpeed, ForceMode2D.Impulse);
+                    damageBullet.GetComponent<Rigidbody2D>().AddForce(barrelRotator.up * bulletSpeed * schootSliderSpeed.value, ForceMode2D.Impulse);
                 }
             }
-            if (Health >= 150)
+            if (health >= 150)
             {
-                Health = 150;
+                health = 150;
                 updateHP();
             }
 
@@ -185,26 +188,33 @@ public class TankController : MonoBehaviour
                 toChoosingAmount();
             }
         }
-        if (Health <= 0)
+        if (health <= 0)
         {
-            Health = 0;
-            HPText.text =Health + " Bitches".ToString();
-            Instantiate(Death, tankBody.position, tankBody.rotation);
+            Explode();
+            health = 0;
+            hpText.text = health.ToString();
+            Instantiate(death, tankBody.position, tankBody.rotation);
+            Debug.Log("tank"+playerNumber + "lost");
             Object.Destroy(theEntireTank);
         }
         //Change turn
-        if (Amount >= 1)
+        if (upgrade >= 1)
         {
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 Invoke("ChangeTurn", 0.1f);
+                StopWheels();
             }
+        }
+        if (timeToMove <= 0)
+        {
+            StopWheels();
         }
     }
     public void defaultMoveTime()
     {
         timeToMove = 3;
-        MoveTime.text = "Seconds you can move: " + timeToMove.ToString();
+        moveTime.text = timeToMove.ToString();
     }
     //Change Turns?
     void ChangeTurn()
@@ -225,50 +235,50 @@ public class TankController : MonoBehaviour
     //Button Bullets + Movement
     public void toChoosingAmount()
     {
-        Amount = 0;
+        upgrade = 0;
         allowedToMove = false;
-        animator.SetBool("Drive_Forward", false);
-        animator.SetBool("Drive_Not", true);
+        MoveSlider();
+        StopWheels();
     }
     public void toNormalAmount()
     {
-        Amount = 1;
+        upgrade = 1;
         allowedToMove = true;
         defaultMoveTime();
     }
     public void toSnipeAmount()
     {
-        Amount = 2;
+        upgrade = 2;
         allowedToMove = true;
         defaultMoveTime();
     }
     public void toSpreadAmount()
     {
-        Amount = 3;
+        upgrade = 3;
         allowedToMove = true;
         defaultMoveTime();
     }
     public void toBigAmount()
     {
-        Amount = 4;
+        upgrade = 4;
         allowedToMove = true;
         defaultMoveTime();
     }
     public void toPoisonAmount()
     {
-        Amount = 5;
+        upgrade = 5;
         allowedToMove = true;
         defaultMoveTime();
     }
     public void toFireworkAmount()
     {
-        Amount = 6;
+        upgrade = 6;
         allowedToMove = true;
         defaultMoveTime();
     }
     public void toDamageAmount()
     {
-        Amount = 7;
+        upgrade = 7;
         allowedToMove = true;
         defaultMoveTime();
     }
@@ -276,33 +286,46 @@ public class TankController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            Health = Health - 25;
+            health = health - 25;
         }
         if (collision.gameObject.CompareTag("SnipeBullet"))
         {
-            Health = Health - 50;
+            health = health - 50;
         }
         if (collision.gameObject.CompareTag("PoisonBullet"))
         {
-            Health = Health - 15;
+            health = health - 15;
         }
         if (collision.gameObject.CompareTag("CloseBullet"))
         {
-            Health = Health - 40;
+            health = health - 40;
         }
         if (collision.gameObject.CompareTag("SpreadBullet"))
         {
-            Health = Health - 20;
+            health = health - 20;
         }
         if (collision.gameObject.CompareTag("DamageBullet"))
         {
-            Health = Health - 60;
+            health = health - 60;
         }
         updateHP();
     }
     public void updateHP()
     {
-        HPText.text = "HP" + playerNumber + ":" + Health.ToString();
+        hpText.text = health.ToString();
+        hpBar.value = health;
     }
-
+    public void StopWheels()
+    {
+        animator.SetBool("Drive_Forward", false);
+        animator.SetBool("Drive_Not", true);
+    }
+    public void Explode()
+    {
+        animatorBackround.SetBool("Explode", true);
+    }
+    public void MoveSlider()
+    {
+        schootSliderSpeed.transform.position = new Vector2(upgrades.position.x, upgrades.position.y);
+    }
 }

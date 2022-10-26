@@ -5,6 +5,8 @@ using UnityEngine;
 public class ButtonController : MonoBehaviour
 {
     [SerializeField]
+    Transform teleporter;
+    [SerializeField]
     Transform upgrades;
     // Start is called before the first frame update
     void Start()
@@ -13,7 +15,7 @@ public class ButtonController : MonoBehaviour
     }
     public void buttonPressed()
     {
-        upgrades.transform.position = new Vector2(387, 539);
+        upgrades.transform.position = new Vector2(teleporter.position.x, teleporter.position.y);
     }
 
     // Update is called once per frame

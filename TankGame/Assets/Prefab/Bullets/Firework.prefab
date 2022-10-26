@@ -317,9 +317,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletTtl: 10
-  explosion: {fileID: 8705763139545306364, guid: 9ff37cb5524d08141b5a99a44ba55f42, type: 3}
-  explosion2: {fileID: 9156259430793932961, guid: 16bd04bba42267f4e8defe7e9ade9695, type: 3}
-  explosion3: {fileID: 7869774758774157694, guid: 239fd93f1aec49a4f8d59a08f301091a, type: 3}
+  explosion: {fileID: 3653300491330806422, guid: 641ecb72d1eebb94fa9a152ea62bdb50, type: 3}
+  explosion2: {fileID: 3653300491330806422, guid: 641ecb72d1eebb94fa9a152ea62bdb50, type: 3}
+  explosion3: {fileID: 3653300491330806422, guid: 641ecb72d1eebb94fa9a152ea62bdb50, type: 3}
   bullet: {fileID: 828840311048861230}
-  Explodepoint2: {fileID: 8357857141680416307}
-  Explodepoint3: {fileID: 616486650983579467}
+  Explodepoint2: {fileID: 0}
+  Explodepoint3: {fileID: 0}
+  upgrades: {fileID: 0}
+  teleporter: {fileID: 0}
+  teleporterSlider: {fileID: 0}
+  schootSliderSpeed: {fileID: 0}
+  slider: {fileID: 0}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BulletController : MonoBehaviour
 {
@@ -15,14 +16,22 @@ public class BulletController : MonoBehaviour
     [SerializeField]
     Transform bullet;
     [SerializeField]
-    Transform Explodepoint2;
-    [SerializeField]
-    Transform Explodepoint3;
-    [SerializeField]
     Transform upgrades;
+    [SerializeField]
+    Transform teleporter;
+    [SerializeField]
+    Transform teleporterSlider;
+    [SerializeField]
+    Transform schootSliderSpeed;
+    [SerializeField]
+    Transform slider;
     void Start()
     {
         upgrades = GameObject.Find("Upgrades").transform;
+        schootSliderSpeed = GameObject.Find("Slider").transform;
+        teleporter = GameObject.Find("TPActive").transform;
+        teleporterSlider = GameObject.Find("TPSlider").transform;
+        slider = GameObject.Find("FirespeedSlider").transform;
     }
     void Update()
     {
@@ -38,22 +47,20 @@ public class BulletController : MonoBehaviour
         if (collision.gameObject.CompareTag("Kill"))
         {
             Instantiate(explosion, bullet.position, bullet.rotation);
-            Instantiate(explosion2, Explodepoint2.position, bullet.rotation);
-            Instantiate(explosion3, Explodepoint3.position, bullet.rotation);
             bringBackButton();
             Destroy(gameObject);
         }
         if (collision.gameObject.CompareTag("Player"))
         {
             Instantiate(explosion, bullet.position, bullet.rotation);
-            Instantiate(explosion2, Explodepoint2.position, bullet.rotation);
-            Instantiate(explosion3, Explodepoint3.position, bullet.rotation);
             bringBackButton();
             Destroy(gameObject);
         }
     }
     public void bringBackButton()
     {
-        upgrades.transform.position = new Vector2(387, 357);
+        upgrades.transform.position = new Vector2(teleporter.position.x , teleporter.position.y);
+        schootSliderSpeed.transform.position = new Vector2(teleporterSlider.position.x, teleporterSlider.position.y);
+        slider.transform.position = new Vector2(teleporterSlider.position.x, teleporterSlider.position.y);
     }
 }

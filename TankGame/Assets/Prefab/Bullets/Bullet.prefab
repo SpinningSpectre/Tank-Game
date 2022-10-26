@@ -147,12 +147,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e04fbc10c3b9f942a26951dc50b0480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletTtl: 10
   explosion: {fileID: 2342714445650502408, guid: 868f0ad8bda7f364b89fa8a6cb645833, type: 3}
-  explosion2: {fileID: 8348298568284468266, guid: 1757f768d5e4f1941973a06d3c482c87, type: 3}
-  explosion3: {fileID: 8348298568284468266, guid: 1757f768d5e4f1941973a06d3c482c87, type: 3}
+  explosion2: {fileID: 0}
+  explosion3: {fileID: 0}
   bullet: {fileID: 198046743472841708}
   Explodepoint2: {fileID: 198046743472841708}
   Explodepoint3: {fileID: 198046743472841708}
+  upgrades: {fileID: 0}
+  teleporter: {fileID: 0}
+  teleporterSlider: {fileID: 0}
+  schootSliderSpeed: {fileID: 0}
+  slider: {fileID: 0}
 --- !u!1 &8280484255295368356
 GameObject:
   m_ObjectHideFlags: 0
