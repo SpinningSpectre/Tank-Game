@@ -1,4 +1,4 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,11 +33,12 @@ public class PlayerTurn : MonoBehaviour
         if (b == true)
         {
             ActiveTurn = true;
-            GetComponent<SpriteRenderer>().material = activeMat; 
-        } else
+            GetComponent<SpriteRenderer>().material = activeMat;
+        }
+        else
         {
             ActiveTurn = false;
             GetComponent<SpriteRenderer>().material = inactiveMat;
         }
     }
-}*/
+}

@@ -12,6 +12,8 @@ TagManager:
   - PoisonBullet
   - SpreadBullet
   - DamageBullet
+  - Boss
+  - Lazer
   layers:
   - Default
   - TransparentFX
@@ -51,4 +53,7 @@ TagManager:
     locked: 0
   - name: Important
     uniqueID: 4238396375
+    locked: 0
+  - name: Lazer
+    uniqueID: 2572178639
     locked: 0

@@ -1824,7 +1824,9 @@ MonoBehaviour:
   playerNumber: 1
   hpText: {fileID: 1233413985}
   moveTime: {fileID: 742697693}
+  Boss: 0
   health: 100
+  damageMultiplier: 1
   death: {fileID: 6837803560939924163, guid: bfd3b2cc90fb9b04e94da1c6731b31b3, type: 3}
   tankBody: {fileID: 1030802735}
   theEntireTank: {fileID: 280731013}
@@ -1949,7 +1951,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 365719916}
-  - component: {fileID: 365719914}
+  - component: {fileID: 365719917}
+  - component: {fileID: 365719918}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Manager
@@ -1957,20 +1960,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &365719914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 365719913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67b68616b38694742b67d30a03831894, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player1: {fileID: 280731013}
-  player2: {fileID: 761311503}
 --- !u!4 &365719916
 Transform:
   m_ObjectHideFlags: 0
@@ -1986,6 +1975,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &365719917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365719913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67b68616b38694742b67d30a03831894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1: {fileID: 280731013}
+  player2: {fileID: 761311503}
+--- !u!114 &365719918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365719913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2781e716fcaf6d54981fff0155bf7fd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  untilNextScene: 3
 --- !u!1 &388071660
 GameObject:
   m_ObjectHideFlags: 0
@@ -3875,7 +3891,7 @@ GameObject:
   - component: {fileID: 761311507}
   - component: {fileID: 761311506}
   - component: {fileID: 761311505}
-  - component: {fileID: 761311504}
+  - component: {fileID: 761311509}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -3883,21 +3899,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &761311504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 761311503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce629f1d5bd85e040954cfe905347a79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerNumber: 2
-  activeMat: {fileID: 2100000, guid: f2704801c8af0454293a7be3c339f69b, type: 2}
-  inactiveMat: {fileID: 2100000, guid: 1858c03e9e23ce14ab4c629788788a95, type: 2}
 --- !u!114 &761311505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3939,7 +3940,9 @@ MonoBehaviour:
   playerNumber: 2
   hpText: {fileID: 84208904}
   moveTime: {fileID: 742697693}
+  Boss: 0
   health: 100
+  damageMultiplier: 1
   death: {fileID: 6837803560939924163, guid: bfd3b2cc90fb9b04e94da1c6731b31b3, type: 3}
   tankBody: {fileID: 535904604}
   theEntireTank: {fileID: 761311503}
@@ -4040,6 +4043,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &761311509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761311503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce629f1d5bd85e040954cfe905347a79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 2
+  activeMat: {fileID: 2100000, guid: f2704801c8af0454293a7be3c339f69b, type: 2}
+  inactiveMat: {fileID: 2100000, guid: 1858c03e9e23ce14ab4c629788788a95, type: 2}
 --- !u!1 &801924877
 GameObject:
   m_ObjectHideFlags: 0
@@ -4338,8 +4356,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 1
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -5518,7 +5536,7 @@ SpriteRenderer:
   m_SortingLayerID: -56570921
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 819a1bff79970194098651302ee7aed6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5526,7 +5544,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &1416560029
@@ -7054,8 +7072,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 1
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

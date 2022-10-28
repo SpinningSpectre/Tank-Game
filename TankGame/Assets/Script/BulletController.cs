@@ -10,10 +10,6 @@ public class BulletController : MonoBehaviour
     [SerializeField]
     GameObject explosion;
     [SerializeField]
-    GameObject explosion2;
-    [SerializeField]
-    GameObject explosion3;
-    [SerializeField]
     Transform bullet;
     [SerializeField]
     Transform upgrades;
@@ -50,7 +46,19 @@ public class BulletController : MonoBehaviour
             bringBackButton();
             Destroy(gameObject);
         }
+        if (collision.gameObject.CompareTag("Lazer"))
+        {
+            Instantiate(explosion, bullet.position, bullet.rotation);
+            bringBackButton();
+            Destroy(gameObject);
+        }
         if (collision.gameObject.CompareTag("Player"))
+        {
+            Instantiate(explosion, bullet.position, bullet.rotation);
+            bringBackButton();
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.CompareTag("Boss"))
         {
             Instantiate(explosion, bullet.position, bullet.rotation);
             bringBackButton();

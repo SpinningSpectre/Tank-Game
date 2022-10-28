@@ -14,4 +14,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CreditsScene.unity
     guid: be40f197182740d4590c954c95585f03
+  - enabled: 1
+    path: Assets/Scenes/BossMode.unity
+    guid: c874f9e14a004364d91259b9ee795499
+  - enabled: 1
+    path: Assets/Scenes/WinsLosses/BossLose.unity
+    guid: 43b37702ebd01d0489d099d65478550e
+  - enabled: 1
+    path: Assets/Scenes/WinsLosses/BossWin.unity
+    guid: b6c381abad2cd6d439be5aec45ff3fd5
+  - enabled: 1
+    path: Assets/Scenes/WinsLosses/WinB.unity
+    guid: 1519bd6851e81804fa3bbbc97857cdda
+  - enabled: 1
+    path: Assets/Scenes/WinsLosses/WinR.unity
+    guid: faa385d31223e3c4b94dd5580815cc61
+  - enabled: 1
+    path: Assets/Scenes/WinsLosses/SecretEnding.unity
+    guid: 59357639b3fce6c44b55bb9dd7c685bd
   m_configObjects: {}
