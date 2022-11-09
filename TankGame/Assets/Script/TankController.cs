@@ -78,7 +78,7 @@ public class TankController : MonoBehaviour
     Transform tankBody;
     [SerializeField]
     GameObject theEntireTank;
-    public float timeToMove = 3;
+    public float timeToMove = 6;
     [SerializeField]
     Transform upgrades;
     public Slider hpBar;
@@ -265,7 +265,7 @@ public class TankController : MonoBehaviour
     }
     public void DefaultMoveTime()
     {
-        timeToMove = 3;
+        timeToMove = 6;
         moveTime.text = timeToMove.ToString();
     }
     //Change Turns?

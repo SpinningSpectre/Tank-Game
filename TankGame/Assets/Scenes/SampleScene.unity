@@ -1826,11 +1826,11 @@ MonoBehaviour:
   moveTime: {fileID: 742697693}
   Boss: 0
   health: 100
-  damageMultiplier: 1
+  damageMultiplier: 1.5
   death: {fileID: 6837803560939924163, guid: bfd3b2cc90fb9b04e94da1c6731b31b3, type: 3}
   tankBody: {fileID: 1030802735}
   theEntireTank: {fileID: 280731013}
-  timeToMove: 3
+  timeToMove: 6
   upgrades: {fileID: 1118461629}
   hpBar: {fileID: 1566849079}
   schootSliderSpeed: {fileID: 759552372}
@@ -3956,11 +3956,11 @@ MonoBehaviour:
   moveTime: {fileID: 742697693}
   Boss: 0
   health: 100
-  damageMultiplier: 1
+  damageMultiplier: 1.5
   death: {fileID: 6837803560939924163, guid: bfd3b2cc90fb9b04e94da1c6731b31b3, type: 3}
   tankBody: {fileID: 535904604}
   theEntireTank: {fileID: 761311503}
-  timeToMove: 3
+  timeToMove: 6
   upgrades: {fileID: 1118461629}
   hpBar: {fileID: 125286498}
   schootSliderSpeed: {fileID: 759552372}
@@ -5398,6 +5398,7 @@ RectTransform:
   - {fileID: 1392724474}
   - {fileID: 821074330}
   - {fileID: 411630865}
+  - {fileID: 1697653575}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6521,6 +6522,93 @@ Transform:
   m_Father: {fileID: 235804202}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -61.941}
+--- !u!1 &1697653574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1697653575}
+  - component: {fileID: 1697653577}
+  - component: {fileID: 1697653576}
+  m_Layer: 5
+  m_Name: Text (Legacy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1697653575
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697653574}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1405978835}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -23, y: -222}
+  m_SizeDelta: {x: 160, y: 90}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1697653576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697653574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 60
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Presentation Build.
+
+    Modifiers:
+
+    1.5x Damage
+
+    2x Movement
+    Time'
+--- !u!222 &1697653577
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697653574}
+  m_CullTransparentMesh: 1
 --- !u!1 &1699996239
 GameObject:
   m_ObjectHideFlags: 0
