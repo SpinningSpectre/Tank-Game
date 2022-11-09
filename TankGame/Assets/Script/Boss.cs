@@ -13,6 +13,7 @@ public class Boss : MonoBehaviour
     bool attack1IsInactive = true;
     bool hasUsedAttack2 = false;
     bool hasUsedAttack3 = false;
+    bool attack3Active = false;
     public float health = 100;
     public float damageMultiplier = 1;
     [SerializeField]
@@ -34,10 +35,31 @@ public class Boss : MonoBehaviour
     public Slider hpBar;
     Animator animator;
     Animator animatorBackround;
-    float untilNextScene = 5;
+    [SerializeField]
+    Transform leftBlock;
+    [SerializeField]
+    Transform rightBlock;
+    [SerializeField]
+    Transform middleBlock;
+    [SerializeField]
+    Transform normalBlock;
+    [SerializeField]
+    GameObject midBlock;
+    [SerializeField]
+    Transform currentlyMovingTo;
+    [SerializeField]
+    float timeTillNextBomb;
+    bool hasANumber = false;
+    [SerializeField]
+    GameObject bombToDrop;
+    [SerializeField]
+    Transform firePoint;
     // Start is called before the first frame update
     void Start()
     {
+        leftBlock = GameObject.Find("BossMoveTo1").GetComponent<Transform>();
+        rightBlock = GameObject.Find("BossMoveTo2").GetComponent<Transform>();
+        normalBlock = GameObject.Find("BossStand").GetComponent<Transform>();
         animatorBackround = GameObject.Find("Backround").GetComponent<Animator>();
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GameObject.Find("Shield").GetComponent<SpriteRenderer>();
@@ -49,6 +71,20 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (attack3Active == true)
+        {
+            timeTillNextBomb -= Time.deltaTime * 10;
+            if (hasANumber == false)
+            {
+                timeTillNextBomb = Random.Range(05, 15);
+                hasANumber = true;
+            }
+            if (timeTillNextBomb <= 0)
+            {
+                GameObject bullet = Instantiate(bombToDrop, firePoint.position, firePoint.rotation);
+                hasANumber = false;
+            }
+        }
         if (hasHadInvincible == false)
         {
             if (health <= 100)
@@ -67,17 +103,12 @@ public class Boss : MonoBehaviour
         {
             spriteRenderer2.color = new Color(1f, 0f, 0f, 1f);
             spriteRenderer3.color = new Color(1f, 0f, 0f, 1f);
-            ActiveBossAttack();
             ActiveAttackIs1();
         }
         else if (health <= 400 && (hasUsedAttack1 == true) && (attack1IsInactive == true))
         {
             InActiveAttackIs1();
-            InActiveBossAttack();
             attack1IsInactive = false;
-        }
-        {
-            ActiveBossAttack();
         }
         if (health <= 300 && hasUsedAttack2 == false)
         {
@@ -87,8 +118,8 @@ public class Boss : MonoBehaviour
         if (health <= 200 & hasUsedAttack3 == false)
         {
             spriteRenderer4.color = new Color(1f, 1f, 1f, 1f);
-            Debug.Log("1");
-            ActiveAttackIs3();
+            ToMiddle();
+            attack3Active = true;
             hasUsedAttack3 = true;
         }
         if (health <= 0)
@@ -100,6 +131,11 @@ public class Boss : MonoBehaviour
             Debug.Log("Boss" + "lost");
             Object.Destroy(theEntireTank);
             Explode();
+        }
+        if (hasUsedAttack3 == true)
+        {
+            Vector2 bossMoving = currentlyMovingTo.position - transform.position;
+            transform.Translate(new Vector2(bossMoving.normalized.x * Time.deltaTime * 4, bossMoving.normalized.y * Time.deltaTime * 4));
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -131,6 +167,28 @@ public class Boss : MonoBehaviour
         }
         updateHP();
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Attack 3
+        if (collision.gameObject.CompareTag("LeftTrigger"))
+        {
+            Debug.Log("LeftTrig");
+            ToRight();
+        }
+        if (collision.gameObject.CompareTag("RightTrigger"))
+        {
+            Debug.Log("RightTrig");
+            ToLeft();
+        }
+        if (collision.gameObject.CompareTag("MiddleTrigger"))
+        {
+            Debug.Log("MiddleTrig");
+            ToRight();
+            Object.Destroy(midBlock);
+        }
+    }
+
     public void updateHP()
     {
         hpText.text = health.ToString();
@@ -141,27 +199,12 @@ public class Boss : MonoBehaviour
         //Backround Explodes
         animatorBackround.SetBool("Explode", true);
     }
-    public void ActiveBossAttack()
-    {
-        GameObject.Find("Player1").GetComponent<TankController>().BossEventActive();
-        GameObject.Find("Player2").GetComponent<TankController>().BossEventActive();
-    }
-    public void InActiveBossAttack()
-    {
-        GameObject.Find("Player1").GetComponent<TankController>().BossEventInActive();
-        GameObject.Find("Player2").GetComponent<TankController>().BossEventInActive();
-    }
     void ActiveAttackIs1()
     {
         GetComponentInChildren<LazerSpawnAttack>().ActivateAttack();
     }
     void ActiveAttackIs2()
     {
-        GameObject.Find("Attack2").GetComponent<FloorActive>().ActivateAtk2();
-    }
-    void ActiveAttackIs3()
-    {
-        Debug.Log("2");
         GameObject.Find("Attack2").GetComponent<FloorActive>().ActivateAtk2();
     }
     public void InActiveAttackIs1()
@@ -171,5 +214,21 @@ public class Boss : MonoBehaviour
     void BossDied()
     {
         GameObject.Find("GameManager").GetComponent<nextScene>().BossDead();
+    }
+    public void ToLeft()
+    {
+        Debug.Log("1");
+        currentlyMovingTo = leftBlock;
+    }
+    public void ToRight()
+    {
+        Debug.Log("2");
+        attack3Active = true;
+        currentlyMovingTo = rightBlock;
+    }
+    public void ToMiddle()
+    {
+        Debug.Log("3");
+        currentlyMovingTo = middleBlock;
     }
 }

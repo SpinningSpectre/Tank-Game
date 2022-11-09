@@ -187,7 +187,7 @@ public class TankController : MonoBehaviour
                 {
                     if (Input.GetKeyDown(KeyCode.Mouse1))
                     {
-                        health += 10;
+                        health += 15;
                         updateHP();
                         GameObject poisonbullet = Instantiate(poisonBulletToFire, firePoint.position, firePoint.rotation);
                         poisonbullet.GetComponent<Rigidbody2D>().AddForce(barrelRotator.up * bulletSpeed * schootSliderSpeed.value, ForceMode2D.Impulse);
@@ -226,7 +226,7 @@ public class TankController : MonoBehaviour
                 toChoosingAmount();
             }
         }
-        if (health <= 0)
+        if (health <= -0)
         {
             Explode();
             health = 0;
@@ -356,11 +356,11 @@ public class TankController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("CloseBullet"))
         {
-            health = health - 40 * damageMultiplier;
+            health = health - 50 * damageMultiplier;
         }
         if (collision.gameObject.CompareTag("SpreadBullet"))
         {
-            health = health - 20 * damageMultiplier;
+            health = health - 25 * damageMultiplier;
         }
         if (collision.gameObject.CompareTag("DamageBullet"))
         {
@@ -369,6 +369,10 @@ public class TankController : MonoBehaviour
         if (collision.gameObject.CompareTag("Lazer"))
         {
             health = 0;
+        }
+        if (collision.gameObject.CompareTag("Bomb"))
+        {
+            health = health - 15;
         }
         updateHP();
     }
@@ -389,14 +393,6 @@ public class TankController : MonoBehaviour
     public void MoveSlider()
     {
         schootSliderSpeed.transform.position = new Vector2(upgrades.position.x, upgrades.position.y);
-    }
-    public void BossEventActive()
-    {
-        inBossEvent = true;
-    }
-    public void BossEventInActive()
-    {
-        inBossEvent = false;
     }
     public void BossLose()
     {

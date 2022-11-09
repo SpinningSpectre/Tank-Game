@@ -104,7 +104,7 @@ MonoBehaviour:
   moveToP1: {fileID: 0}
   moveToP2: {fileID: 0}
   lazernumber: 2
-  lazerTtl: 2
+  lazerTtl: 3
 --- !u!61 &7879921709657819923
 BoxCollider2D:
   m_ObjectHideFlags: 0

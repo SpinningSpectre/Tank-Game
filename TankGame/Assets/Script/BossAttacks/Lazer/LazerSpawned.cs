@@ -12,7 +12,6 @@ public class LazerSpawned : MonoBehaviour
     int lazernumber = 0;
     [SerializeField]
     float lazerTtl = 5;
-    bool lazerDamage = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +35,6 @@ public class LazerSpawned : MonoBehaviour
         lazerTtl -= Time.deltaTime;
         if (lazerTtl <= 0)
         {
-            GameObject.Find("Boss").GetComponent<Boss>().InActiveBossAttack();
             Destroy(gameObject);
         }
 

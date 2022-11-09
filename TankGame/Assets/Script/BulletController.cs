@@ -64,6 +64,12 @@ public class BulletController : MonoBehaviour
             bringBackButton();
             Destroy(gameObject);
         }
+        if (collision.gameObject.CompareTag("Bomb"))
+        {
+            Instantiate(explosion, bullet.position, bullet.rotation);
+            bringBackButton();
+            Destroy(gameObject);
+        }
     }
     public void bringBackButton()
     {
