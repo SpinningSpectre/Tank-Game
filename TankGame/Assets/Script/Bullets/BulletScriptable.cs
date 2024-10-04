@@ -13,4 +13,5 @@ public class BulletScriptable : ScriptableObject
     public float health = 0;
     public GameObject explosion;
     public Color explosionColor;
+    public float explosionSize = 1;
 }

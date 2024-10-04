@@ -26,6 +26,10 @@ public class NewTankController : MonoBehaviour
         {
             FireBullet();
         }
+        if (Input.GetKey(KeyCode.V))
+        {
+            FireBullet();
+        }
     }
 
     public void FireBullet()
@@ -37,9 +41,11 @@ public class NewTankController : MonoBehaviour
             firePoint.rotation
         );
 
-        bullet.GetComponent<BulletController>();
+        NewBulletController controller = bullet.GetComponent<NewBulletController>();
+        controller.stats = selectedBullets[0];
         Rigidbody2D rigidB = bullet.GetComponent<Rigidbody2D>();
         rigidB.AddForce(firePoint.up * scrip.speed,ForceMode2D.Impulse);
+        bullet.transform.Find("ParticleTrail").gameObject.SetActive(true);
     }
 
     public void DoDamage(float amount)

@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5deea0456920f164898519787c17c6d2, type: 3}
   m_Name: TestBull
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 198046743472841697, guid: d9620c252041a0045b81c1e52d76b2af, type: 3}
+  bulletPrefab: {fileID: 4281291297758134590, guid: 5c34c2eaa9af4ee4093b7a83c9d49629, type: 3}
   damage: 10
   speed: 10
   health: 0
+  explosion: {fileID: 2342714445650502408, guid: 868f0ad8bda7f364b89fa8a6cb645833, type: 3}
+  explosionColor: {r: 0, g: 0, b: 0, a: 0}
+  explosionSize: 1
