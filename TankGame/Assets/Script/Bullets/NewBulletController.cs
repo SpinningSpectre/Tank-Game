@@ -24,7 +24,7 @@ public class NewBulletController : MonoBehaviour
         Explode();
     }
 
-    private void Explode()
+    protected virtual void Explode()
     {
         GameObject particle = Instantiate(stats.explosion,transform.position,new Quaternion(0,0,0,0));
         ParticleSystem system = particle.GetComponent<ParticleSystem>();

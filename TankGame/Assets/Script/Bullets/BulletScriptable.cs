@@ -18,4 +18,9 @@ public class BulletScriptable : ScriptableObject
     public Gradient explosionColor1;
     public Gradient explosionColor2;
     public float explosionSize = 1;
+
+    [Header("Bullets on death")]
+    public int amountOfDeathBullets;
+    public Vector3 deathBulletLaunchDirection;
+    public BulletScriptable deathBulletStats;
 }

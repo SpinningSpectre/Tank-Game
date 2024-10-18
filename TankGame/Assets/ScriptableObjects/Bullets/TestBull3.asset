@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5deea0456920f164898519787c17c6d2, type: 3}
   m_Name: TestBull3
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 4281291297758134590, guid: 5c34c2eaa9af4ee4093b7a83c9d49629, type: 3}
+  bulletPrefab: {fileID: 4281291297758134590, guid: 00a98a28457d0af40913451fa898ab00, type: 3}
   damage: 5
   speed: 10
-  health: -10
+  health: 0
+  amountOfBullets: 1
   explosion: {fileID: 2342714445650502408, guid: 868f0ad8bda7f364b89fa8a6cb645833, type: 3}
   explosionColor1:
     serializedVersion: 2
@@ -77,4 +78,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  explosionSize: 1
+  explosionSize: 3
+  amountOfDeathBullets: 10
+  deathBulletLaunchDirection: {x: 1, y: 0, z: 0}
+  deathBulletStats: {fileID: 11400000, guid: ee3b0dc408da63b43a84d9e7f3f8c90c, type: 2}
