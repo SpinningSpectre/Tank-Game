@@ -20,7 +20,7 @@ public class NewBulletController : MonoBehaviour
 
     private IEnumerator KillBulletOverTime()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
         Explode();
     }
 
@@ -32,20 +32,24 @@ public class NewBulletController : MonoBehaviour
 
         ParticleSystem.MainModule main = system.main;
         main.startSpeed = stats.explosionSize;
+        main.startColor = new ParticleSystem.MinMaxGradient(stats.explosionColor1,stats.explosionColor2);
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<Rigidbody2D>().simulated = false;
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         ParticleSystem.EmissionModule trail = transform.Find("ParticleTrail").GetComponent<ParticleSystem>().emission;
         trail.enabled = false;
 
-        Collider2D[] col = Physics2D.OverlapCircleAll(transform.position, 3);
+        Collider2D[] col = Physics2D.OverlapCircleAll(transform.position, 1.5f * stats.explosionSize);
 
         for(int i = 0; i < col.Length; i++)
         {
             if (col[i].gameObject.GetComponent<Rigidbody2D>() != null)
             {
-                col[i].gameObject.GetComponent<Rigidbody2D>().AddForce((col[i].transform.position - transform.position) * 100);
-
+                col[i].gameObject.GetComponent<Rigidbody2D>().AddForce((col[i].transform.position - transform.position) * 300);
+            }
+            if (col[i].gameObject.GetComponent<NewTankController>() != null)
+            {
+                col[i].gameObject.GetComponent<NewTankController>().DoDamage(stats.damage / 2);
             }
         }
         Destroy(gameObject,2);

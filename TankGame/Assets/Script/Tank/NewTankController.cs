@@ -12,12 +12,22 @@ public class NewTankController : MonoBehaviour
     [SerializeField] private float startHealth = 100;
     [SerializeField] private float maxHealth = 150;
 
+    [Header("Turns")]
+    [SerializeField] private bool currentTurn = false;
+    [SerializeField] private bool canShoot = true;
+
+    public int numb = 0;
     private void Start()
     {
         currentHealth = startHealth;
         if(firePoint == null)
         {
             firePoint = transform.Find("Firepoint");
+        }
+        for(int i = 0; i < 10; i++)
+        {
+            print(firePoint.rotation.eulerAngles.z + (i * 5));
+
         }
     }
     private void Update()
@@ -30,27 +40,37 @@ public class NewTankController : MonoBehaviour
         {
             FireBullet();
         }
+        if (Input.GetKey(KeyCode.B))
+        {
+            FireBullet(numb);
+            numb++;
+            if(numb > 3)
+            {
+                numb = 0;
+            }
+        }
     }
 
-    public void FireBullet()
+    public void FireBullet(int type = 0)
     {
-        BulletScriptable scrip = selectedBullets[0];
+        BulletScriptable scrip = selectedBullets[type];
         GameObject bullet = Instantiate(
-            selectedBullets[0].bulletPrefab,
+            selectedBullets[type].bulletPrefab,
             firePoint.position,
             firePoint.rotation
         );
 
         NewBulletController controller = bullet.GetComponent<NewBulletController>();
-        controller.stats = selectedBullets[0];
+        controller.stats = selectedBullets[type];
         Rigidbody2D rigidB = bullet.GetComponent<Rigidbody2D>();
-        rigidB.AddForce(firePoint.up * scrip.speed,ForceMode2D.Impulse);
+        rigidB.AddForce(firePoint.up * scrip.speed, ForceMode2D.Impulse);
         bullet.transform.Find("ParticleTrail").gameObject.SetActive(true);
     }
 
     public void DoDamage(float amount)
     {
         currentHealth -= amount;
+        //print(currentHealth);
         if (currentHealth < 0)
         {
             print("You ded");

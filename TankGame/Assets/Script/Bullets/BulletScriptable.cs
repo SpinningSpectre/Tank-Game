@@ -11,7 +11,11 @@ public class BulletScriptable : ScriptableObject
     public float damage = 10;
     public float speed = 1;
     public float health = 0;
+    public int amountOfBullets = 1;
+
+    [Header("Explosion")]
     public GameObject explosion;
-    public Color explosionColor;
+    public Gradient explosionColor1;
+    public Gradient explosionColor2;
     public float explosionSize = 1;
 }
