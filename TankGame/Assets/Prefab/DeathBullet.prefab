@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4281291297758134577}
   - component: {fileID: 4281291297758134576}
   - component: {fileID: 8463084486231423170}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DeathBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 6552602185214531671}
   - component: {fileID: 4140771364040020744}
   - component: {fileID: 2686327550052899045}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ParticleTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

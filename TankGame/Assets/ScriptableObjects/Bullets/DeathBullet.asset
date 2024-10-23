@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: DeathBullet
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4281291297758134590, guid: 00a98a28457d0af40913451fa898ab00, type: 3}
-  damage: 10
-  speed: 2
-  health: 0
+  damage: 5
+  speed: -20
+  health: 100
   amountOfBullets: 1
+  deathTime: 5
   explosion: {fileID: 2342714445650502408, guid: 868f0ad8bda7f364b89fa8a6cb645833, type: 3}
   explosionColor1:
     serializedVersion: 2
@@ -37,17 +38,17 @@ MonoBehaviour:
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 31997
-    atime2: 59753
-    atime3: 64379
-    atime4: 65535
+    atime1: 59753
+    atime2: 65535
+    atime3: 0
+    atime4: 0
     atime5: 0
     atime6: 0
     atime7: 0
     m_Mode: 0
     m_ColorSpace: -1
     m_NumColorKeys: 2
-    m_NumAlphaKeys: 5
+    m_NumAlphaKeys: 3
   explosionColor2:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 0.11764706}
@@ -79,6 +80,9 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 6
   explosionSize: 1
+  doKnockback: 1
+  doesntKnockback:
+  - {fileID: 11400000}
   amountOfDeathBullets: 0
   deathBulletLaunchDirection: {x: 1, y: 0, z: 0}
   deathBulletStats: {fileID: 11400000}

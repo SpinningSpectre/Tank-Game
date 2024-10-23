@@ -17,6 +17,7 @@ MonoBehaviour:
   speed: 10
   health: 10
   amountOfBullets: 2
+  deathTime: 5
   explosion: {fileID: 2342714445650502408, guid: 868f0ad8bda7f364b89fa8a6cb645833, type: 3}
   explosionColor1:
     serializedVersion: 2
@@ -79,3 +80,8 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   explosionSize: 0
+  doKnockback: 1
+  doesntKnockback: []
+  amountOfDeathBullets: 0
+  deathBulletLaunchDirection: {x: 0, y: 0, z: 0}
+  deathBulletStats: {fileID: 0}

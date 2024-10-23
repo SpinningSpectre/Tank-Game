@@ -8,7 +8,7 @@ public class NewTankController : MonoBehaviour
     [SerializeField] private Transform firePoint;
 
     [Header("Health")]
-    private float currentHealth = 100;
+    public float currentHealth = 100;
     [SerializeField] private float startHealth = 100;
     [SerializeField] private float maxHealth = 150;
 
@@ -30,8 +30,12 @@ public class NewTankController : MonoBehaviour
 
         }
     }
+    bool autoFire = false;
+    bool no = true;
     private void Update()
     {
+#if UNITY_EDITOR
+        no = !no;
         if (Input.GetKeyDown(KeyCode.C))
         {
             FireBullet();
@@ -39,6 +43,17 @@ public class NewTankController : MonoBehaviour
         if (Input.GetKey(KeyCode.V))
         {
             FireBullet();
+        }
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            autoFire = !autoFire;
+        }
+        if(autoFire)
+        {
+            if (!no)
+            {
+                FireBullet();
+            }
         }
         if (Input.GetKey(KeyCode.B))
         {
@@ -49,6 +64,7 @@ public class NewTankController : MonoBehaviour
                 numb = 0;
             }
         }
+#endif
     }
 
     public void FireBullet(int type = 0)
@@ -65,6 +81,7 @@ public class NewTankController : MonoBehaviour
         Rigidbody2D rigidB = bullet.GetComponent<Rigidbody2D>();
         rigidB.AddForce(firePoint.up * scrip.speed, ForceMode2D.Impulse);
         bullet.transform.Find("ParticleTrail").gameObject.SetActive(true);
+        DoDamage(-scrip.health);
     }
 
     public void DoDamage(float amount)

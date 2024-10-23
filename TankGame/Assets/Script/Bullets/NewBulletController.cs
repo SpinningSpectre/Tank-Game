@@ -20,7 +20,7 @@ public class NewBulletController : MonoBehaviour
 
     private IEnumerator KillBulletOverTime()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(stats.deathTime);
         Explode();
     }
 
@@ -43,9 +43,24 @@ public class NewBulletController : MonoBehaviour
 
         for(int i = 0; i < col.Length; i++)
         {
-            if (col[i].gameObject.GetComponent<Rigidbody2D>() != null)
+            if (col[i].gameObject.GetComponent<Rigidbody2D>() != null && stats.doKnockback)
             {
-                col[i].gameObject.GetComponent<Rigidbody2D>().AddForce((col[i].transform.position - transform.position) * 300);
+                bool doesntGetKnockback = false;
+                NewBulletController contr;
+                if(col[i].gameObject.TryGetComponent(out contr))
+                {
+                    for(int b = 0; b < stats.doesntKnockback.Count; b++)
+                    {
+                        if(contr.stats == stats.doesntKnockback[b])
+                        {
+                            doesntGetKnockback = true;
+                        }
+                    }
+                }
+                if (!doesntGetKnockback)
+                {
+                    col[i].gameObject.GetComponent<Rigidbody2D>().AddForce((col[i].transform.position - transform.position) * 300);
+                }
             }
             if (col[i].gameObject.GetComponent<NewTankController>() != null)
             {

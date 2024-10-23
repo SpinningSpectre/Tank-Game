@@ -12,12 +12,15 @@ public class BulletScriptable : ScriptableObject
     public float speed = 1;
     public float health = 0;
     public int amountOfBullets = 1;
+    public float deathTime = 5;
 
     [Header("Explosion")]
     public GameObject explosion;
     public Gradient explosionColor1;
     public Gradient explosionColor2;
     public float explosionSize = 1;
+    public bool doKnockback = true;
+    public List<BulletScriptable> doesntKnockback;
 
     [Header("Bullets on death")]
     public int amountOfDeathBullets;
