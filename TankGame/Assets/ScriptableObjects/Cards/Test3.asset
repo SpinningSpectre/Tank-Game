@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5384a97892f4a904e937e63958f43359, type: 3}
+  m_Name: Test3
+  m_EditorClassIdentifier: 
+  cardIcon: {fileID: 21300000, guid: 9b9833ce09bf9674c85f7ab66501ee92, type: 3}
+  cardName: Not a bullet
+  bullet: {fileID: 11400000, guid: ea4adb553ee50514e9106ef553325f4f, type: 2}
+  special1Text: Test2
+  special1Value: 
+  special2Text: 
+  special2Value: 

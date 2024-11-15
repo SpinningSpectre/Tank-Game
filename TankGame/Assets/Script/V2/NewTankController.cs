@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NewTankController : MonoBehaviour
 {
-    [SerializeField] private BulletScriptable[] selectedBullets = new BulletScriptable[4];
+    public BulletScriptable[] selectedBullets = new BulletScriptable[4];
     [SerializeField] private Transform firePoint;
 
     [Header("Health")]
