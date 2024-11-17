@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NewTankController : MonoBehaviour
 {
-    public BulletScriptable[] selectedBullets = new BulletScriptable[4];
+    public BulletScriptable[] selectedBullets = new BulletScriptable[3];
     [SerializeField] private Transform firePoint;
 
     [Header("Health")]
@@ -59,7 +59,7 @@ public class NewTankController : MonoBehaviour
         {
             FireBullet(numb);
             numb++;
-            if(numb > 3)
+            if(numb > 2)
             {
                 numb = 0;
             }

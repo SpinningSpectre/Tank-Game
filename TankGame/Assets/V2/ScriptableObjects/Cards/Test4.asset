@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5384a97892f4a904e937e63958f43359, type: 3}
-  m_Name: Test2
+  m_Name: Test4
   m_EditorClassIdentifier: 
-  cardIcon: {fileID: 280950776, guid: 0cb2928d6ad15694db916c6c63cf56df, type: 3}
-  cardName: Death.
-  bullet: {fileID: 11400000, guid: a954685475c7b514a80a557377fa0a5b, type: 2}
-  special1Text: KILLS YOU!!!!!!!1!!!
-  special1Value: Test1
-  special2Text: 
-  special2Value: 
+  cardIcon: {fileID: 520140241, guid: 0cb2928d6ad15694db916c6c63cf56df, type: 3}
+  cardName: Spawns 5 death
+  bullet: {fileID: 11400000, guid: 76e4f0a2c1a131b43b89252217cd9eb9, type: 2}
+  special1Text: 'Heals you for:'
+  special1Value: 10
+  special2Text: 'Heals enemies for:'
+  special2Value: 5

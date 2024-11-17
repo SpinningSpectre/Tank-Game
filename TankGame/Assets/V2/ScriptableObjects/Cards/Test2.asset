@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5384a97892f4a904e937e63958f43359, type: 3}
-  m_Name: Test1
+  m_Name: Test2
   m_EditorClassIdentifier: 
-  cardIcon: {fileID: -1514411401, guid: 0cb2928d6ad15694db916c6c63cf56df, type: 3}
-  cardName: Card Test
-  bullet: {fileID: 11400000, guid: ee3b0dc408da63b43a84d9e7f3f8c90c, type: 2}
-  special1Text: Doesnt do a lot
-  special1Value: DeathBulletBTW
+  cardIcon: {fileID: 280950776, guid: 0cb2928d6ad15694db916c6c63cf56df, type: 3}
+  cardName: Basic bullet
+  bullet: {fileID: 11400000, guid: a954685475c7b514a80a557377fa0a5b, type: 2}
+  special1Text: KILLS YOU!!!!!!!1!!!
+  special1Value: Test1
   special2Text: 
   special2Value: 

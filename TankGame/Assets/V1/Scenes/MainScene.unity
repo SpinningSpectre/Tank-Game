@@ -375,9 +375,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedBullets:
-  - {fileID: 11400000, guid: a954685475c7b514a80a557377fa0a5b, type: 2}
-  - {fileID: 11400000, guid: 29dced4855fa8454b95a97ffc1bcca32, type: 2}
-  - {fileID: 11400000, guid: ea4adb553ee50514e9106ef553325f4f, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   firePoint: {fileID: 273159401}
   currentHealth: 100
   startHealth: 100

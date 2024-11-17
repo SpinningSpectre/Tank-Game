@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5384a97892f4a904e937e63958f43359, type: 3}
-  m_Name: Test3
+  m_Name: Test1
   m_EditorClassIdentifier: 
-  cardIcon: {fileID: 21300000, guid: 9b9833ce09bf9674c85f7ab66501ee92, type: 3}
-  cardName: Not a bullet
-  bullet: {fileID: 11400000, guid: ea4adb553ee50514e9106ef553325f4f, type: 2}
-  special1Text: Test2
-  special1Value: 
+  cardIcon: {fileID: -1514411401, guid: 0cb2928d6ad15694db916c6c63cf56df, type: 3}
+  cardName: Death bullet
+  bullet: {fileID: 11400000, guid: ee3b0dc408da63b43a84d9e7f3f8c90c, type: 2}
+  special1Text: Doesnt do a lot
+  special1Value: DeathBulletBTW
   special2Text: 
   special2Value: 

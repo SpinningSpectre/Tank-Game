@@ -38,17 +38,23 @@ public class CardReferences : MonoBehaviour
         actualCard = realCard;
     }
 
+    /// <summary>
+    /// Moves the card to the next available spot
+    /// </summary>
     public void MoveCard()
     {
+        //Get all spots
         CardScriptable[] selecteds = BulletSelectionManager.instance.selectedCards;
         for (int i = 0; i < selecteds.Length; i++)
         {
+            //if its already in a spot then remove the card
             if(scriptable == selecteds[i])
             {
                 BulletSelectionManager.instance.RemoveCard(scriptable,actualCard);
                 return;
             }
         }
+        //Otherwise move the card into the next available spot
         StartCoroutine(BulletSelectionManager.instance.MoveCard(scriptable,actualCard));
         
     }
