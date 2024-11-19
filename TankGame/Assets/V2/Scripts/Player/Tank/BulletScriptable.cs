@@ -8,11 +8,17 @@ using UnityEngine;
 public class BulletScriptable : ScriptableObject
 {
     public GameObject bulletPrefab;
-    public float damage = 10;
+
+    [Header("Main stats")]
+    public float directDamage = 10;
+    public float splashDamage = 5;
     public float speed = 1;
-    public float health = 0;
-    public int amountOfBullets = 1;
     public float deathTime = 5;
+
+    [Header("Special stats")]
+    public float selfHealing = 0;
+    public int amountOfBullets = 1;
+    public float airTimeDamageIncrease = 0;
 
     [Header("Explosion")]
     public GameObject explosion;

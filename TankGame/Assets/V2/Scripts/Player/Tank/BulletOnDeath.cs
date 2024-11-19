@@ -5,9 +5,9 @@ using UnityEngine;
 public class BulletOnDeath : NewBulletController
 {
 
-    protected override void Explode()
+    protected override void Explode(Collision2D collider)
     {
-        base.Explode();
+        base.Explode(collider);
         for (int i = 0; i < stats.amountOfDeathBullets; i++)
         {
             //Spawn a bullet and give it stats

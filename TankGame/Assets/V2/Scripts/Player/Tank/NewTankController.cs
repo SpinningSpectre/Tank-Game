@@ -81,7 +81,7 @@ public class NewTankController : MonoBehaviour
         Rigidbody2D rigidB = bullet.GetComponent<Rigidbody2D>();
         rigidB.AddForce(firePoint.up * scrip.speed, ForceMode2D.Impulse);
         bullet.transform.Find("ParticleTrail").gameObject.SetActive(true);
-        DoDamage(-scrip.health);
+        DoDamage(-scrip.selfHealing);
     }
 
     public void DoDamage(float amount)

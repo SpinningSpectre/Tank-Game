@@ -6,30 +6,30 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/StartScreen.unity
+    path: Assets/V1/Scenes/StartScreen.unity
     guid: ebfea6aa87a5c6b4283a490be807394c
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/V1/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/Unused/CreditsScene.unity
+    path: Assets/V1/Scenes/Unused/CreditsScene.unity
     guid: be40f197182740d4590c954c95585f03
   - enabled: 1
-    path: Assets/Scenes/BossMode.unity
+    path: Assets/V1/Scenes/BossMode.unity
     guid: c874f9e14a004364d91259b9ee795499
   - enabled: 1
-    path: Assets/Scenes/WinsLosses/BossLose.unity
+    path: Assets/V1/Scenes/WinsLosses/BossLose.unity
     guid: 43b37702ebd01d0489d099d65478550e
   - enabled: 1
-    path: Assets/Scenes/WinsLosses/BossWin.unity
+    path: Assets/V1/Scenes/WinsLosses/BossWin.unity
     guid: b6c381abad2cd6d439be5aec45ff3fd5
   - enabled: 1
-    path: Assets/Scenes/WinsLosses/WinB.unity
+    path: Assets/V1/Scenes/WinsLosses/WinB.unity
     guid: 1519bd6851e81804fa3bbbc97857cdda
   - enabled: 1
-    path: Assets/Scenes/WinsLosses/WinR.unity
+    path: Assets/V1/Scenes/WinsLosses/WinR.unity
     guid: faa385d31223e3c4b94dd5580815cc61
   - enabled: 1
-    path: Assets/Scenes/Unused/SecretEnding.unity
+    path: Assets/V1/Scenes/Unused/SecretEnding.unity
     guid: 59357639b3fce6c44b55bb9dd7c685bd
   m_configObjects: {}

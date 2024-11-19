@@ -8,10 +8,12 @@ public class NewBulletController : MonoBehaviour
     public BulletScriptable stats;
     void Start()
     {
+        //When the bullet spawns, kill it after stats.deathtime seconds
         StartCoroutine(KillBulletOverTime());
     }
     void Update()
     {
+        //Makes the bullet look where its going
         Vector3 lookAtPoint = transform.GetComponent<Rigidbody2D>().velocity.normalized;
         lookAtPoint += transform.position;
         transform.LookAt(lookAtPoint, new Vector3(0, 0, -1));
@@ -21,15 +23,16 @@ public class NewBulletController : MonoBehaviour
     private IEnumerator KillBulletOverTime()
     {
         yield return new WaitForSeconds(stats.deathTime);
-        Explode();
+        Explode(null);
     }
 
-    protected virtual void Explode()
+    protected virtual void Explode(Collision2D collider)
     {
+        //Spawns a particle
         GameObject particle = Instantiate(stats.explosion,transform.position,new Quaternion(0,0,0,0));
         ParticleSystem system = particle.GetComponent<ParticleSystem>();
 
-
+        //Gives it the stats that match with the scriptable
         ParticleSystem.MainModule main = system.main;
         main.startSpeed = stats.explosionSize;
         main.startColor = new ParticleSystem.MinMaxGradient(stats.explosionColor1,stats.explosionColor2);
@@ -39,10 +42,18 @@ public class NewBulletController : MonoBehaviour
         ParticleSystem.EmissionModule trail = transform.Find("ParticleTrail").GetComponent<ParticleSystem>().emission;
         trail.enabled = false;
 
+        //Deals direct damage if it hit a tank directly
+        if(collider.gameObject.GetComponent<NewTankController>() != null)
+        {
+            collider.gameObject.GetComponent<NewTankController>().DoDamage(stats.directDamage);
+        }
+
+        //Checks all colliders in the splash area
         Collider2D[] col = Physics2D.OverlapCircleAll(transform.position, 1.5f * stats.explosionSize);
 
         for(int i = 0; i < col.Length; i++)
         {
+            //Deals knockback if it can
             if (col[i].gameObject.GetComponent<Rigidbody2D>() != null && stats.doKnockback)
             {
                 bool doesntGetKnockback = false;
@@ -62,19 +73,25 @@ public class NewBulletController : MonoBehaviour
                     col[i].gameObject.GetComponent<Rigidbody2D>().AddForce((col[i].transform.position - transform.position) * 300);
                 }
             }
-            if (col[i].gameObject.GetComponent<NewTankController>() != null)
+
+            //Deals damage if its a tank and isnt the main collider it hit
+            if (col[i].gameObject.GetComponent<NewTankController>() != null && col[i].gameObject != collider.gameObject)
             {
-                col[i].gameObject.GetComponent<NewTankController>().DoDamage(stats.damage / 2);
+                col[i].gameObject.GetComponent<NewTankController>().DoDamage(stats.splashDamage);
             }
         }
+
+        //Keeps the object alive for 2 more seconds so it can finish its particle
         Destroy(gameObject,2);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //Temporary
         if(collision.gameObject.name == "Break")
         {
-            Explode();
+
+            Explode(collision);
         }
     }
 }
