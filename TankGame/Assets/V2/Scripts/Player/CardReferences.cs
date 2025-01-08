@@ -25,7 +25,7 @@ public class CardReferences : MonoBehaviour
         cardName.text = card.cardName;
         cardImage.sprite = card.cardIcon;
 
-        cardDamage.text = card.bullet.damage.ToString();
+        cardDamage.text = card.bullet.directDamage.ToString();
         cardSplash.text = card.bullet.explosionSize.ToString();
 
         cardSpecial1.text = card.special1Text;

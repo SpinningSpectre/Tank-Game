@@ -22,7 +22,10 @@ public class BulletSelectionManager : MonoBehaviour
 
     [SerializeField] private GameObject startButton;
 
-    [SerializeField] private NewTankController[] tanks = new NewTankController[2];
+    //[SerializeField] private NewTankController[] tanks = new NewTankController[2];
+    [SerializeField] private PlayerTurnManager turnManager;
+
+    [SerializeField] private GameObject selectingUI;
     int currentTankSelecting = 0;
     void Start()
     {
@@ -135,9 +138,9 @@ public class BulletSelectionManager : MonoBehaviour
     public void StartGame()
     {
         //Puts the bullets into the tanks
-        for(int i = 0; i < tanks[currentTankSelecting].selectedBullets.Length; i++)
+        for(int i = 0; i < turnManager.playerBullets.Length / 2; i++)
         {
-            tanks[currentTankSelecting].selectedBullets[i] = selectedCards[i].bullet;
+            turnManager.playerBullets[currentTankSelecting, i] = selectedCards[i];
         }
 
         //If tank 0, go over to tank 1
@@ -148,7 +151,8 @@ public class BulletSelectionManager : MonoBehaviour
         }
         else
         {
-            //Turn stuff off
+            selectingUI.SetActive(false);
+            turnManager.StartRound();
         }
     }
 
