@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NewTankController : MonoBehaviour
 {
-    public BulletScriptable[] selectedBullets = new BulletScriptable[3];
+    public BulletScriptable currentBullet;
     [SerializeField] private Transform firePoint;
 
     [Header("Health")]
@@ -13,10 +13,9 @@ public class NewTankController : MonoBehaviour
     [SerializeField] private float maxHealth = 150;
 
     [Header("Turns")]
-    [SerializeField] private bool currentTurn = false;
     [SerializeField] private bool canShoot = true;
 
-    public int numb = 0;
+    public int playerNumber = 0;
     private void Start()
     {
         currentHealth = startHealth;
@@ -26,58 +25,29 @@ public class NewTankController : MonoBehaviour
         }
         for(int i = 0; i < 10; i++)
         {
-            print(firePoint.rotation.eulerAngles.z + (i * 5));
+            //print(firePoint.rotation.eulerAngles.z + (i * 5));
 
         }
     }
-    bool autoFire = false;
-    bool no = true;
     private void Update()
     {
-#if UNITY_EDITOR
-        no = !no;
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             FireBullet();
         }
-        if (Input.GetKey(KeyCode.V))
-        {
-            FireBullet();
-        }
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            autoFire = !autoFire;
-        }
-        if(autoFire)
-        {
-            if (!no)
-            {
-                FireBullet();
-            }
-        }
-        if (Input.GetKey(KeyCode.B))
-        {
-            FireBullet(numb);
-            numb++;
-            if(numb > 2)
-            {
-                numb = 0;
-            }
-        }
-#endif
     }
 
-    public void FireBullet(int type = 0)
+    public void FireBullet()
     {
-        BulletScriptable scrip = selectedBullets[type];
+        BulletScriptable scrip = currentBullet;
         GameObject bullet = Instantiate(
-            selectedBullets[type].bulletPrefab,
+            currentBullet.bulletPrefab,
             firePoint.position,
             firePoint.rotation
         );
 
         NewBulletController controller = bullet.GetComponent<NewBulletController>();
-        controller.stats = selectedBullets[type];
+        controller.stats = currentBullet;
         Rigidbody2D rigidB = bullet.GetComponent<Rigidbody2D>();
         rigidB.AddForce(firePoint.up * scrip.speed, ForceMode2D.Impulse);
         bullet.transform.Find("ParticleTrail").gameObject.SetActive(true);
@@ -87,7 +57,6 @@ public class NewTankController : MonoBehaviour
     public void DoDamage(float amount)
     {
         currentHealth -= amount;
-        //print(currentHealth);
         if (currentHealth < 0)
         {
             print("You ded");

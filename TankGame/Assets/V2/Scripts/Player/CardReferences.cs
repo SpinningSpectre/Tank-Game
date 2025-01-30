@@ -20,6 +20,9 @@ public class CardReferences : MonoBehaviour
 
     public GameObject actualCard = null;
 
+    public PlayerTurnManager turnManager;
+    public int bulletNumber;
+
     public void GiveCardValues(CardScriptable card,GameObject realCard)
     {
         cardName.text = card.cardName;
@@ -57,5 +60,10 @@ public class CardReferences : MonoBehaviour
         //Otherwise move the card into the next available spot
         StartCoroutine(BulletSelectionManager.instance.MoveCard(scriptable,actualCard));
         
+    }
+
+    public void SelectBullet()
+    {
+        turnManager.SelectBullet(bulletNumber);
     }
 }

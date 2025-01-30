@@ -88,7 +88,7 @@ public class NewBulletController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Temporary
-        if(collision.gameObject.name == "Break")
+        if(Attributes.HasAttribute(collision.gameObject,"BreakBullet"))
         {
 
             Explode(collision);

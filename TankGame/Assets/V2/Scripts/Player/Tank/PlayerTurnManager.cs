@@ -6,20 +6,10 @@ public class PlayerTurnManager : MonoBehaviour
 {
     [SerializeField] private GameObject bulletSelectMenu;
     public CardScriptable[,] playerBullets = new CardScriptable[2,3];
+    [SerializeField] private NewTankController[] tanks = new NewTankController[2];
     [SerializeField] private Transform[] cardPosition;
     [SerializeField] private GameObject bulletCard;
-    private int currentPlayer = 1;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private int currentPlayer = 0;
 
     public void StartRound()
     {
@@ -28,6 +18,14 @@ public class PlayerTurnManager : MonoBehaviour
         {
             GameObject card = Instantiate(bulletCard, cardPosition[i].position, cardPosition[i].rotation,bulletSelectMenu.transform);
             card.GetComponent<CardReferences>().GiveCardValues(playerBullets[currentPlayer,i], card);
+            card.GetComponent<CardReferences>().turnManager = this;
+            card.GetComponent<CardReferences>().bulletNumber = i;
         }
+    }
+
+    public void SelectBullet(int bullet)
+    {
+        bulletSelectMenu.SetActive(false);
+        tanks[currentPlayer].currentBullet = playerBullets[bullet,currentPlayer].bullet;
     }
 }

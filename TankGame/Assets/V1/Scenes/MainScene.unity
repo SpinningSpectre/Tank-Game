@@ -458,17 +458,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ed3ab3e36d47a4ebecd6e87e4b5af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedBullets:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  currentBullet: {fileID: 0}
   firePoint: {fileID: 273159401}
   currentHealth: 100
   startHealth: 100
   maxHealth: 150
-  currentTurn: 0
   canShoot: 1
-  numb: 0
+  playerNumber: 0
 --- !u!1 &466329528
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,17 +809,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ed3ab3e36d47a4ebecd6e87e4b5af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedBullets:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  currentBullet: {fileID: 0}
   firePoint: {fileID: 194325529}
   currentHealth: 100
   startHealth: 100
   maxHealth: 150
-  currentTurn: 0
   canShoot: 1
-  numb: 0
+  playerNumber: 0
 --- !u!4 &597326540
 Transform:
   m_ObjectHideFlags: 0
@@ -1346,6 +1338,7 @@ GameObject:
   - component: {fileID: 1325635499}
   - component: {fileID: 1325635498}
   - component: {fileID: 1325635500}
+  - component: {fileID: 1325635501}
   m_Layer: 0
   m_Name: Break
   m_TagString: Untagged
@@ -1465,6 +1458,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1325635501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325635497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b6a55f3c337c845b38a00f1ed310bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attributes:
+  - BreakBullet
 --- !u!1 &1420323694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1737,6 +1744,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSelectMenu: {fileID: 478421744}
+  tanks:
+  - {fileID: 401995312}
+  - {fileID: 597326539}
   cardPosition:
   - {fileID: 780544142}
   - {fileID: 1139723534}

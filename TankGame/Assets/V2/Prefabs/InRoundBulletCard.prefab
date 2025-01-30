@@ -128,7 +128,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6157896663189780485}
         m_TargetAssemblyTypeName: CardReferences, Assembly-CSharp
-        m_MethodName: MoveCard
+        m_MethodName: SelectBullet
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -160,6 +160,8 @@ MonoBehaviour:
   cardSpecialValue2: {fileID: 6820966402120393116}
   scriptable: {fileID: 0}
   actualCard: {fileID: 0}
+  turnManager: {fileID: 0}
+  bulletNumber: 0
 --- !u!114 &8154173565468266514
 MonoBehaviour:
   m_ObjectHideFlags: 0
