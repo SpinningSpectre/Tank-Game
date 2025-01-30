@@ -15,7 +15,7 @@ MonoBehaviour:
   cardIcon: {fileID: 280950776, guid: 0cb2928d6ad15694db916c6c63cf56df, type: 3}
   cardName: Basic bullet
   bullet: {fileID: 11400000, guid: a954685475c7b514a80a557377fa0a5b, type: 2}
-  special1Text: KILLS YOU!!!!!!!1!!!
-  special1Value: Test1
+  special1Text: Has bland interests
+  special1Value: 
   special2Text: 
   special2Value: 

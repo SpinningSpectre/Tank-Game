@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Test5
   m_EditorClassIdentifier: 
   cardIcon: {fileID: 1631209166, guid: 0cb2928d6ad15694db916c6c63cf56df, type: 3}
-  cardName: negative explosion size
+  cardName: im nothin like yall
   bullet: {fileID: 11400000, guid: 0e1b962d22e432a46bffbb2c16fe70ef, type: 2}
-  special1Text: Test4
+  special1Text: '"dude thats not how explosions work"'
   special1Value: 
   special2Text: 
   special2Value: 

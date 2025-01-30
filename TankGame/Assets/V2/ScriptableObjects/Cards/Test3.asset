@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Test3
   m_EditorClassIdentifier: 
   cardIcon: {fileID: 21300000, guid: 9b9833ce09bf9674c85f7ab66501ee92, type: 3}
-  cardName: 0 Explosion size??
+  cardName: Thats still not a bullet
   bullet: {fileID: 11400000, guid: ea4adb553ee50514e9106ef553325f4f, type: 2}
-  special1Text: Test2
+  special1Text: halo
   special1Value: 
-  special2Text: 
+  special2Text: Hallo!!!
   special2Value: 

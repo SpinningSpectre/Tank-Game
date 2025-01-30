@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Test1
   m_EditorClassIdentifier: 
   cardIcon: {fileID: -1514411401, guid: 0cb2928d6ad15694db916c6c63cf56df, type: 3}
-  cardName: Death bullet
+  cardName: Da bullet dieded
   bullet: {fileID: 11400000, guid: ee3b0dc408da63b43a84d9e7f3f8c90c, type: 2}
-  special1Text: Doesnt do a lot
-  special1Value: DeathBulletBTW
+  special1Text: :(
+  special1Value: 
   special2Text: 
   special2Value: 
