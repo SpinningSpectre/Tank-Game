@@ -464,6 +464,7 @@ MonoBehaviour:
   startHealth: 100
   maxHealth: 150
   canShoot: 1
+  turnManager: {fileID: 0}
   playerNumber: 0
 --- !u!1 &466329528
 GameObject:
@@ -815,6 +816,7 @@ MonoBehaviour:
   startHealth: 100
   maxHealth: 150
   canShoot: 1
+  turnManager: {fileID: 0}
   playerNumber: 0
 --- !u!4 &597326540
 Transform:

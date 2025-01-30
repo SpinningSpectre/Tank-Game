@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerTurnManager : MonoBehaviour
@@ -13,19 +14,51 @@ public class PlayerTurnManager : MonoBehaviour
 
     public void StartRound()
     {
-        bulletSelectMenu.SetActive(true);
-        for(int i = 0; i < 3; i++)
+        for(int i = 0; i < tanks.Length; i++)
         {
-            GameObject card = Instantiate(bulletCard, cardPosition[i].position, cardPosition[i].rotation,bulletSelectMenu.transform);
-            card.GetComponent<CardReferences>().GiveCardValues(playerBullets[currentPlayer,i], card);
+            tanks[i].turnManager = this;
+            tanks[i].playerNumber = i;
+        }
+        ShowCards();
+    }
+
+    List<GameObject> cards = new List<GameObject>();
+    private void ShowCards()
+    {
+        for(int i = 0; i < cards.Count; i++)
+        {
+            Destroy(cards[i]);
+        }
+        cards = new List<GameObject>();
+        bulletSelectMenu.SetActive(true);
+        for (int i = 0; i < 3; i++)
+        {
+            GameObject card = Instantiate(bulletCard, cardPosition[i].position, cardPosition[i].rotation, bulletSelectMenu.transform);
+            card.GetComponent<CardReferences>().GiveCardValues(playerBullets[currentPlayer, i], card);
             card.GetComponent<CardReferences>().turnManager = this;
             card.GetComponent<CardReferences>().bulletNumber = i;
+            cards.Add(card);
         }
+    }
+
+    public void Swap()
+    {
+        for (int i = 0; i < tanks.Length; i++)
+        {
+            tanks[i].canShoot = false;
+        }
+        if (currentPlayer == 0)
+        {
+            currentPlayer = 1;
+        }
+        else { currentPlayer = 0; }
+        ShowCards();
     }
 
     public void SelectBullet(int bullet)
     {
+        tanks[currentPlayer].canShoot = true;
         bulletSelectMenu.SetActive(false);
-        tanks[currentPlayer].currentBullet = playerBullets[bullet,currentPlayer].bullet;
+        tanks[currentPlayer].currentBullet = playerBullets[currentPlayer,bullet].bullet;
     }
 }

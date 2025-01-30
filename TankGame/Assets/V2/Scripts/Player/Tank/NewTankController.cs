@@ -13,7 +13,9 @@ public class NewTankController : MonoBehaviour
     [SerializeField] private float maxHealth = 150;
 
     [Header("Turns")]
-    [SerializeField] private bool canShoot = true;
+    public bool canShoot = true;
+
+    public PlayerTurnManager turnManager;
 
     public int playerNumber = 0;
     private void Start()
@@ -31,9 +33,10 @@ public class NewTankController : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && canShoot)
         {
             FireBullet();
+            turnManager.Swap();
         }
     }
 
